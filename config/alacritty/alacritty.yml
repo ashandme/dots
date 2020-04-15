@@ -1,0 +1,51 @@
+font:
+  normal:
+    family: MesloLGS NF
+    style: Regular
+
+  bold:
+    family: MesloLGS NF
+    style: Bold
+
+  italic:
+    family: MesloLGS NF
+    style: Italic
+
+  bold_italic:
+    family: MesloLGS NF
+    style: Bold Italic
+colors:
+  # Default colors
+  primary:
+    background: '#000000'
+    foreground: '#EBEBEB'
+
+  # Cursor colors
+  cursor:
+   text: '#FF261E'
+   cursor: '#1BA6FA'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#FF301B'
+    green:   '#A0E521'
+    yellow:  '#FFC620'
+    blue:    '#1BA6FA'
+    magenta: '#8763B8'
+    cyan:    '#21DEEF'
+    white:   '#EBEBEB'
+
+  # Bright colors
+  bright:
+    black:   '#6D7070'
+    red:     '#FF4352'
+    green:   '#B8E466'
+    yellow:  '#FFD750'
+    blue:    '#1BA6FA'
+    magenta: '#A578EA'
+    cyan:    '#73FBF1'
+    white:   '#FEFEF8'
+
+
+background_opacity: 0.5
