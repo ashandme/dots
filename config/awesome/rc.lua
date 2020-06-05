@@ -1,16 +1,11 @@
--- libs
 local gears = require("gears")
 local delayed_call = require("gears.timer").delayed_call
 local awful = require("awful")
 require("awful.autofocus")
-
 local wibox = require("wibox")
-
 local beautiful = require("beautiful")
-
 local naughty = require("naughty")
 local menubar = require("menubar")
-
 local mpc = require("mpc")
 
 -- error handling
@@ -113,20 +108,20 @@ local clock_widget = wibox.widget {
 	-- time
 	{
 		{
-			format = "%-l:%M",
+			format = "%-l:%M ",
 			widget = wibox.widget.textclock,
-			align = "right",
+			align = "left",
 		},
 		widget = wibox.container.background,
 		fg = beautiful.fg_focus,
 	},
 	-- date
 	{
-		format = "%A, %b. %-e",
+		format = "%b, %-e %A",
 		widget = wibox.widget.textclock,
-		align = "right",
+		align = "left",
 	},
-	widget = wibox.layout.flex.vertical,
+	widget = wibox.layout.flex.horizontal,
 }
 
 local mpd_conn
@@ -148,10 +143,10 @@ local music_widget = wibox.widget {
 
 awful.screen.connect_for_each_screen(function(s)
 	s.padding = {
-		left = 16,
-		right = 16,
-		top = 16,
-		bottom = 20,
+		left = 0,
+		right = 0,
+		top = 0,
+		bottom = 35,
 	}
 
 	awful.tag(tags, s, awful.layout.layouts[1])
@@ -186,20 +181,19 @@ awful.screen.connect_for_each_screen(function(s)
 	local bar = wibox {
 		widget = wibox.widget {
 			workspace_widget,
-			nil,
 			clock_widget,
 			widget = wibox.layout.align.horizontal,
 		},
 		screen = s,
 		type = "dock",
 		visible = true,
-		width = s.geometry.width - 50,
-		height = 40,
-		bg = "#00000000",
+		width = s.geometry.width - 10,
+		height = 30,
+		bg = beautiful.bg_normal,
 	}
 
 	awful.placement.bottom(bar, {
-		offset = {y = -20},
+		offset = {y = -5},
 		attach = true,
 	})
 end)
@@ -255,8 +249,8 @@ keybinds = gears.table.join(
 	),
 	awful.key(
 		{mod}, "f",
-		function() awful.spawn("nautilus -w") end,
-		{description = "launch file manager", group = "apps"}
+		function() awful.spawn("emacs") end,
+		{description = "launch emacs", group = "apps"}
 	),
 	awful.key(
 		{mod}, "w",
@@ -611,7 +605,6 @@ client.connect_signal("request::titlebars", function(c)
 
 	local status_textbox = wibox.widget.textbox(status_text(c))
 	awful.titlebar(c, { size = 16, position = "left" }):setup({
-		--[[
 		{
 			{
 				align = "left",
@@ -630,7 +623,6 @@ client.connect_signal("request::titlebars", function(c)
 			right = 25,
 			layout = wibox.container.margin,
 		},
-		]]
 		buttons = titlebar_mousebinds,
 		layout = wibox.layout.align.horizontal,
 	})
@@ -644,8 +636,7 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- rounded corners
---[[
-local function rrect(c, w, h)
+--[[local function rrect(c, w, h)
 	return gears.shape.rounded_rect(c, w, h, beautiful.border_radius)
 end
 
@@ -654,10 +645,9 @@ client.connect_signal("manage", function(c)
 		 c.shape = rrect
 	end
 end)
-]]--
 
 beautiful.notification_shape = rrect
-
+]]--
 -- focus follows mouse
 client.connect_signal("mouse::enter", function(c)
 	if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier and awful.client.focus.filter(c) then
@@ -669,13 +659,11 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- music
-local function mpd_err(err)
-	--[[
+--[[local function mpd_err(err)
 	gears.timer.start_new(10, function()
 		mpd_conn:send("ping")
 	end)
-	]]--
-end
+end]]--
 
 mpd_conn = mpc.new(nil, nil, nil, mpd_err,
 	"status", function(_, r)

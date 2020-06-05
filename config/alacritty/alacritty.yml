@@ -1,30 +1,30 @@
-window:
-  dimensions:
-    columns: 80
-    lines: 24
+#window:
+dimensions:
+columns: 80
+lines: 24
 
-  padding:
+padding:
     x: 32
     y: 32
 
-  dynamic_padding: true
+dynamic_padding: true
 
-  decorations: full
+decorations: full
 
 
 scrolling:
   history: 10000
 font:
   normal:
-    family: Source Code Pro
+    family: Iosevka Term
 
   bold:
-    family: Source Code Pro
+    family: Iosevka Term
 
   italic:
-    family: Source Code Pro
+    family: Iosevka Term
 
-  size: 11.0
+  size: 14
 
   offset:
     x: 0
@@ -43,36 +43,39 @@ draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
-    background: '#dddddd'
-    foreground: '#000000'
+    background: '#282b33'
+    foreground: '#a6c1e0'
 
   normal:
-    black:   '#d1d3d2'
+    black:   '#6e7899'
     red:     '#a85751'
-    green:   '#95b29E'
-    yellow:  '#d7816a'
-    blue:    '#0892a5'
-    magenta: '#c97b84'
-    cyan:    '#4e937a'
-    white:   '#463730'
+    green:   '#7ebebd'
+    yellow:  '#c0c092'
+    blue:    '#a6c1e0'
+    magenta: '#b0a2e7'
+    cyan:    '#7ebebd'
+    white:   '#c6c6c6'
 
   bright:
-    black:   '#d1d3d2'
-    red:     '#a85751'
-    green:   '#95b29f'
+    black:   '#888395'
+    red:     '#a26d3c'
+    green:   '#00d896'
+    yellow:  '#d7816a'
+    blue:    '#819cd6'
+    magenta: '#ee82ee'
     yellow:  '#d7816a'
     blue:    '#0892a5'
-    magenta: '#c97b84'
-    cyan:    '#4e937a'
-    white:   '#463730'
+    magenta: '#ee82ee'
+    cyan:    '#03e9cd'
+    white:   '#eeeeee'
 
 visual_bell:
-  animation: EaseOutQuint
-  duration: 100
-  color: '#ffffff'
+  animation: EaseOutExpo
+  duration: 200
+  color: '#819cd6'
 
 
-background_opacity: 0.5
+background_opacity: 1
 
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }

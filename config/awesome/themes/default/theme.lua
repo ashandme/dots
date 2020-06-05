@@ -9,28 +9,28 @@ local config_path = awful.util.getdir("config")
 
 local theme = {}
 
-theme.font          = "Roboto Regular 10"
-theme.mono_font     = "Source Code Pro"
+theme.font          = "Iosevka Term"
+theme.mono_font     = "Iosevka Term"
 
 
-theme.bg_normal     = "#d1d3d2"
-theme.bg_bright     = "#fdfffc"
-theme.bg_focus      = "#000000"
+theme.bg_normal     = "#282b33"
+theme.bg_bright     = "#000000"
+theme.bg_focus      = "#819cd6"
 theme.bg_urgent     = "#a85751"
 theme.bg_systray    = theme.transparent
 
-theme.fg_normal     = "#888888"
-theme.fg_focus      = "#212121"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#626262"
+theme.fg_normal     = "#6e7899"
+theme.fg_focus      = "#a6c1e0"
+theme.fg_urgent     = "#000000"
+theme.fg_minimize   = "#000000"
 
-theme.useless_gap   = dpi(20)
+theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(0)
 theme.border_normal = theme.bg_normal
 theme.border_focus  = theme.bg_focus
 theme.border_marked = theme.bg_bright
 
-theme.border_radius = 10
+theme.border_radius = 5
 
 -- There are other variable sets
 -- overriding the default one when
@@ -51,20 +51,19 @@ theme.notification_margin = 15
 theme.notification_padding = 30
 theme.notification_spacing = 5
 theme.notification_border_width = 0
-theme.notification_bg = theme.transparent
-theme.notification_fg = theme.fg_focus
+theme.notification_bg = theme.bg_focus
+theme.notification_fg = theme.fg_normal
 theme.notification_position = "bottom_right"
 theme.notification_icon_size = 40
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_height = dpi(50)
+theme.menu_width  = dpi(50)
 
 theme.wallpaper = function(s)
-    return "/home/shared/wallpapers/5.12.19/augustine-wong-718468-unsplash.jpg"
+    return "/home/me/Downloads/wall.jpg"
 end
 
 return theme
