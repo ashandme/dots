@@ -6,4 +6,4 @@
 </div>
 
 # Dependencies
-[awesome](https://github.com/awesomeWM/awesome), [picom](https://github.com/yshui/picom) and [alacritty](https://github.com/alacritty/alacritty)
+[awesome](https://github.com/awesomeWM/awesome), [iosevka](https://github.com/be5invis/iosevka) as font, [rofi](https://github.com/davatorium/rofi) as application-menu and [alacritty](https://github.com/alacritty/alacritty) as terminal
