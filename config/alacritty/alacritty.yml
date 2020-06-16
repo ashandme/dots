@@ -11,9 +11,8 @@ dynamic_padding: true
 
 decorations: full
 
-
 scrolling:
-  history: 10000
+  history: 1000
 font:
   normal:
     family: Iosevka Term
@@ -24,7 +23,7 @@ font:
   italic:
     family: Iosevka Term
 
-  size: 14
+  size: 10
 
   offset:
     x: 0
@@ -39,40 +38,44 @@ debug:
 
   persistent_logging: false
 
-draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
-    background: '#282b33'
-    foreground: '#a6c1e0'
-
+    background: '#080b0a'
+    foreground: '#a7ccdb'
   normal:
-    black:   '#6e7899'
-    red:     '#a85751'
-    green:   '#7ebebd'
-    yellow:  '#c0c092'
-    blue:    '#a6c1e0'
-    magenta: '#b0a2e7'
-    cyan:    '#7ebebd'
-    white:   '#c6c6c6'
+    black:   '#181b1a' #zsh
+    red:     '#5e91a7'
+    green:   '#1a8caf'
+    yellow:  '#f5e490'
+    blue:    '#2399c5'
+    magenta: '#90417d'
+    cyan:    '#147095'
+    white:   '#9099a0'
+
+  bold:
+    black:   '#000000'
+    red:     '#000000'
+    green:   '#000000'
+    yellow:  '#000000' #Func or if-else and numbers
+    blue:    '#000000'
+    magenta: '#24c3c4' #strings
+    cyan:    '#80817d' #coments
+    white:   '#000000'
 
   bright:
-    black:   '#888395'
-    red:     '#a26d3c'
-    green:   '#00d896'
-    yellow:  '#d7816a'
-    blue:    '#819cd6'
-    magenta: '#ee82ee'
-    yellow:  '#d7816a'
-    blue:    '#0892a5'
-    magenta: '#ee82ee'
-    cyan:    '#03e9cd'
-    white:   '#eeeeee'
-
+    black:   '#282b2a'
+    red:     '#4d79eb'
+    green:   '#1a8caf'
+    yellow:  '#2494df' #Func or if-else and numbers
+    blue:    '#147095'
+    magenta: '#00c1da' #strings
+    cyan:    '#10354d' #coments
+    white:   '#a7ccdb'
 visual_bell:
   animation: EaseOutExpo
   duration: 200
-  color: '#819cd6'
+  color: '#a7ccdb'
 
 
 background_opacity: 1
@@ -88,7 +91,7 @@ mouse:
 
   url:
     launcher: xdg-open
-
+    
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"

@@ -1,6 +1,7 @@
 local gears = require("gears")
 local delayed_call = require("gears.timer").delayed_call
 local awful = require("awful")
+local hotkeys_popup = require('awful.hotkeys_popup').widget
 require("awful.autofocus")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
@@ -61,6 +62,7 @@ awful.layout.layouts = {
 	awful.layout.suit.floating,
 }
 
+scr_res = "1920x1200"
 -- set up display
 local tags = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
@@ -88,7 +90,7 @@ local workspace_btns = gears.table.join(
 				client.focus:move_to_tag(t)
 			end
 		end
-	),
+		),
 	awful.button(
 		{}, 3,
 		awful.tag.viewtoggle
@@ -104,24 +106,30 @@ local workspace_btns = gears.table.join(
 )
 
 -- global widgets
+-- spacer
+local space = wibox.widget.textbox()
+space:set_text('     ')
+-- clock_widget
 local clock_widget = wibox.widget {
-	-- time
 	{
 		{
-			format = "%-l:%M ",
+			format = "%-k:%M ",
 			widget = wibox.widget.textclock,
-			align = "left",
+			align = "center",
 		},
 		widget = wibox.container.background,
 		fg = beautiful.fg_focus,
 	},
-	-- date
+	widget = wibox.layout.stack
+}
+-- date_widget
+local date_widget = wibox.widget {
 	{
-		format = "%b, %-e %A",
+		format = "%b, %-e %A ",
 		widget = wibox.widget.textclock,
-		align = "left",
+		align = "right",
 	},
-	widget = wibox.layout.flex.horizontal,
+	widget = wibox.layout.stack,
 }
 
 local mpd_conn
@@ -146,7 +154,7 @@ awful.screen.connect_for_each_screen(function(s)
 		left = 0,
 		right = 0,
 		top = 0,
-		bottom = 35,
+		bottom = 30,
 	}
 
 	awful.tag(tags, s, awful.layout.layouts[1])
@@ -165,7 +173,7 @@ awful.screen.connect_for_each_screen(function(s)
 			},
 			widget = wibox.container.margin,
 			left = 5,
-			right = 5,
+			right = 0,
 		},
 	}
 
@@ -182,18 +190,19 @@ awful.screen.connect_for_each_screen(function(s)
 		widget = wibox.widget {
 			workspace_widget,
 			clock_widget,
-			widget = wibox.layout.align.horizontal,
+			date_widget,
+			widget = wibox.layout.stack,
 		},
 		screen = s,
 		type = "dock",
 		visible = true,
-		width = s.geometry.width - 10,
+		width = s.geometry.width - 0,
 		height = 30,
 		bg = beautiful.bg_normal,
 	}
 
 	awful.placement.bottom(bar, {
-		offset = {y = -5},
+		offset = {y = 0},
 		attach = true,
 	})
 end)
@@ -220,6 +229,11 @@ locked_keybinds = gears.table.join(
 keybinds = gears.table.join(
 	-- awesome
 	awful.key(
+		{mod}, 'F1',
+		hotkeys_popup.show_help,
+		{description = "show help", group = "awesome"}	
+	),
+	awful.key(
 		{mod}, "q",
 		awesome.restart,
 		{description = "restart awesome", group = "awesome"}
@@ -244,18 +258,23 @@ keybinds = gears.table.join(
 	-- apps
 	awful.key(
 		{mod}, "c",
-		function() awful.spawn.with_shell("env WINIT_HIDPI_FACTOR=1 alacritty") end,
+		function() awful.spawn("env WINIT_HIDPI_FACTOR=1 alacritty") end,
 		{description = "launch terminal", group = "apps"}
 	),
 	awful.key(
 		{mod}, "f",
-		function() awful.spawn("emacs") end,
-		{description = "launch emacs", group = "apps"}
+		function() awful.spawn("alacritty -e nvim") end,
+		{description = "launch nvim", group = "apps"}
 	),
 	awful.key(
 		{mod}, "w",
-		function() awful.spawn("firefox") end,
+		function() awful.spawn("chromium") end,
 		{description = "launch web browser", group = "apps"}
+	),
+	awful.key(
+		{mod}, "d",
+		function() awful.spawn("Discord") end,
+		{description = "launch discord", group = "apps"}
 	),
 	awful.key(
 		{mod}, "r",
@@ -604,13 +623,13 @@ client.connect_signal("request::titlebars", function(c)
 	)
 
 	local status_textbox = wibox.widget.textbox(status_text(c))
-	awful.titlebar(c, { size = 16, position = "left" }):setup({
+	awful.titlebar(c, { size = 10, position = "left" }):setup({
 		{
 			{
-				align = "left",
+				align = "right",
 				widget = awful.titlebar.widget.titlewidget(c),
 			},
-			left = 25,
+			left = 20,
 			layout = wibox.container.margin,
 		},
 		nil,
@@ -620,7 +639,7 @@ client.connect_signal("request::titlebars", function(c)
 				font = beautiful.mono_font,
 				widget = status_textbox,
 			},
-			right = 25,
+			right = 2,
 			layout = wibox.container.margin,
 		},
 		buttons = titlebar_mousebinds,
