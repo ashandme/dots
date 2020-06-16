@@ -1,7 +1,12 @@
 <h1 align="center">My dots</h1>
 <div align="center">
     <h3>
-    	<img src="img/screen.png" align="center" height="500px">
+    	<img src="img/screen-1.png" align="center" height="500px">
+    </h3>
+</div>
+<div align="center">
+    <h3>
+    	<img src="img/screen-2.png" align="center" height="500px">
     </h3>
 </div>
 
